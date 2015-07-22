@@ -26,10 +26,10 @@ public class ICppMetricExtractionVisitor extends AbstractVisitor {
 
 	private Object process(SimpleNode node) {
 		String name = getFunctionName(node);
-		ICppCCVisitor ccVisitor = new ICppCCVisitor();
-		node.jjtAccept(ccVisitor, null);
+		CxxNDVisitor ndVisitor = new CxxNDVisitor();
+		node.jjtAccept(ndVisitor, null);
 		System.out.println(name);
-		System.out.println(ccVisitor.getComplexity());
+		System.out.println(ndVisitor.getDepth());
 		return null;
 	}
 	
