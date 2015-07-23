@@ -34,7 +34,7 @@ public class FunctionNameGenerator extends AbstractVisitor {
                 case Parser.COMMA :
                     return value;
             }
-            return value + " ";
+            return value;
         }
     };
     private static final Filter PARAMETER_TYPE_FILTER = new Filter()
@@ -47,11 +47,8 @@ public class FunctionNameGenerator extends AbstractVisitor {
                 case Parser.CONST :
                 case Parser.SIGNED :
                 case Parser.UNSIGNED :
-                case Parser.LESSTHAN :
                 case Parser.COMMA :
                     return value + " ";
-                case Parser.GREATERTHAN :
-                    return " " + value;
             }
             return value;
         }
