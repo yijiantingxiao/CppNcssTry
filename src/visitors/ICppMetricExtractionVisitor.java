@@ -5,7 +5,6 @@ import cppast.AstConstructorDefinition;
 import cppast.AstDestructorDefinition;
 import cppast.AstFunctionDefinition;
 import cppast.SimpleNode;
-import cppncss.counter.FunctionNameExtractor;
 
 public class ICppMetricExtractionVisitor extends AbstractVisitor {
 
@@ -25,16 +24,15 @@ public class ICppMetricExtractionVisitor extends AbstractVisitor {
 	}
 
 	private Object process(SimpleNode node) {
-		String name = getFunctionName(node);
+		FunctionNameGenerator generator = new FunctionNameGenerator();
+		String name = (String) generator.visit(node, null);
+		System.out.println(name);
+		/*System.out.println("\tbeginLine: " + node.getFirstToken().beginLine);
+		System.out.println("\tendLine:" + node.getLastToken().endLine);
 		CxxNDVisitor ndVisitor = new CxxNDVisitor();
 		node.jjtAccept(ndVisitor, null);
-		System.out.println(name);
-		System.out.println(ndVisitor.getDepth());
+		System.out.println("\tnesting depth: " + ndVisitor.getDepth());*/
 		return null;
 	}
-	
-	private String getFunctionName(SimpleNode node){
-        return (String)new FunctionNameExtractor().visit( node, null );
-    }
 
 }
