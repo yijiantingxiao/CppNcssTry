@@ -3,16 +3,14 @@ package visitors;
 import cppast.AbstractVisitor;
 import cppast.AstCaseStatement;
 import cppast.AstCatchBlock;
-import cppast.AstConditionalExpression;
-import cppast.AstFunctionBody;
 import cppast.AstIfStatement;
 import cppast.AstIterationStatement;
 import cppast.AstLogicalAndExpression;
 import cppast.AstLogicalOrExpression;
 
-public class ICppCCVisitor extends AbstractVisitor {
+public class CxxCCVisitor extends AbstractVisitor {
 
-	private double complexity;
+	private double complexity = 1;
 
 	@Override
 	public Object visit(AstCaseStatement node, Object data) {
@@ -23,20 +21,6 @@ public class ICppCCVisitor extends AbstractVisitor {
 
 	@Override
 	public Object visit(AstCatchBlock node, Object data) {
-		complexity ++;
-		node.accept(this, null);
-		return null;
-	}
-
-	@Override
-	public Object visit(AstConditionalExpression node, Object data) {
-		complexity ++;
-		node.accept(this, null);
-		return null;
-	}
-
-	@Override
-	public Object visit(AstFunctionBody node, Object data) {
 		complexity ++;
 		node.accept(this, null);
 		return null;

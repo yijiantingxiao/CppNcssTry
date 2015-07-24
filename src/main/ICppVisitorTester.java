@@ -20,7 +20,7 @@ public class ICppVisitorTester {
 			final Options options = new Options(paras);
 	        new CppNcss( options, new ConsoleLogger(options)).run();*/
 	        
-			BufferedReader reader = new BufferedReader(new FileReader("D:/git/lprog/include/matrix.cpp"));
+			BufferedReader reader = new BufferedReader(new FileReader("D:/git/lprog/my.cpp"));
 			Parser parser = new Parser(reader);
 			AstTranslationUnit unit = parser.translation_unit();
 			ICppMetricExtractionVisitor metricExtractionVisitor = new ICppMetricExtractionVisitor();
